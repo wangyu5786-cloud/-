@@ -1,0 +1,13 @@
+date,ticker,side,shares,price,note
+2026-10-26,XOM,BUY,38,182.14,initial build - energy hedge
+2026-10-26,TSM,BUY,16,420.34,initial build - AI foundry
+2026-10-27,NVDA,BUY,40,216.91,AI compute core
+2026-10-27,CRWD,BUY,29,265.39,cybersecurity
+2026-10-28,TSM,BUY,3,438.01,top-up
+2026-10-28,BRK.B,BUY,5,542.51,rates / defensive hedge
+2026-10-28,GEV,BUY,10,884.00,power for data centers
+2026-10-28,SNDK,BUY,4,1381.59,memory - earnings bet
+2026-10-29,TSM,SELL,9,433.96,trim by teammate
+2026-10-29,GOOGL,BUY,10,285.80,AI platform
+2026-10-30,BRK.B,BUY,9,545.70,defensive add on tech sell-off (fill reconstructed from portfolio page)
+2026-10-30,VRT,BUY,21,229.56,GTC limit 230 at support (fill reconstructed from portfolio page)

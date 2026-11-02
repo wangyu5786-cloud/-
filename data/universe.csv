@@ -1,0 +1,101 @@
+ticker,sector_code,sector
+NVDA,A,Semiconductors & chip supply chain
+AVGO,A,Semiconductors & chip supply chain
+MU,A,Semiconductors & chip supply chain
+AMD,A,Semiconductors & chip supply chain
+INTC,A,Semiconductors & chip supply chain
+AMAT,A,Semiconductors & chip supply chain
+LRCX,A,Semiconductors & chip supply chain
+TXN,A,Semiconductors & chip supply chain
+KLAC,A,Semiconductors & chip supply chain
+MRVL,A,Semiconductors & chip supply chain
+TSM,A,Semiconductors & chip supply chain
+ASML,A,Semiconductors & chip supply chain
+ARM,A,Semiconductors & chip supply chain
+QCOM,A,Semiconductors & chip supply chain
+ADI,A,Semiconductors & chip supply chain
+SNPS,A,Semiconductors & chip supply chain
+CDNS,A,Semiconductors & chip supply chain
+ALAB,A,Semiconductors & chip supply chain
+CRDO,A,Semiconductors & chip supply chain
+MPWR,A,Semiconductors & chip supply chain
+SNDK,A,Semiconductors & chip supply chain
+AAPL,B,"Hardware, networking & storage"
+CSCO,B,"Hardware, networking & storage"
+DELL,B,"Hardware, networking & storage"
+ANET,B,"Hardware, networking & storage"
+WDC,B,"Hardware, networking & storage"
+SMCI,B,"Hardware, networking & storage"
+MSFT,C,"Software, cloud & AI"
+PLTR,C,"Software, cloud & AI"
+ORCL,C,"Software, cloud & AI"
+PANW,C,"Software, cloud & AI"
+CRWD,C,"Software, cloud & AI"
+CRWV,C,"Software, cloud & AI"
+NBIS,C,"Software, cloud & AI"
+SNOW,C,"Software, cloud & AI"
+NET,C,"Software, cloud & AI"
+DDOG,C,"Software, cloud & AI"
+MDB,C,"Software, cloud & AI"
+NOW,C,"Software, cloud & AI"
+APP,C,"Software, cloud & AI"
+SOUN,C,"Software, cloud & AI"
+PATH,C,"Software, cloud & AI"
+CRM,C,"Software, cloud & AI"
+IONQ,D,Quantum computing
+QBTS,D,Quantum computing
+GOOGL,E,Internet media & communications
+META,E,Internet media & communications
+NFLX,E,Internet media & communications
+SPCX,F,Commercial space & satellites
+RKLB,F,Commercial space & satellites
+ASTS,F,Commercial space & satellites
+BRK.B,G,"Banks, insurance & capital markets"
+JPM,G,"Banks, insurance & capital markets"
+BAC,G,"Banks, insurance & capital markets"
+MS,G,"Banks, insurance & capital markets"
+GS,G,"Banks, insurance & capital markets"
+WFC,G,"Banks, insurance & capital markets"
+V,H,"Payments, fintech & digital assets"
+MA,H,"Payments, fintech & digital assets"
+COIN,H,"Payments, fintech & digital assets"
+CRCL,H,"Payments, fintech & digital assets"
+MSTR,H,"Payments, fintech & digital assets"
+HOOD,H,"Payments, fintech & digital assets"
+XYZ,H,"Payments, fintech & digital assets"
+SOFI,H,"Payments, fintech & digital assets"
+NU,H,"Payments, fintech & digital assets"
+MARA,H,"Payments, fintech & digital assets"
+AMZN,I,"Consumer discretionary, e-commerce & mobility"
+TSLA,I,"Consumer discretionary, e-commerce & mobility"
+HD,I,"Consumer discretionary, e-commerce & mobility"
+SHOP,I,"Consumer discretionary, e-commerce & mobility"
+MELI,I,"Consumer discretionary, e-commerce & mobility"
+UBER,I,"Consumer discretionary, e-commerce & mobility"
+WMT,J,Consumer staples
+COST,J,Consumer staples
+KO,J,Consumer staples
+PG,J,Consumer staples
+PM,J,Consumer staples
+LLY,K,Healthcare & life sciences
+JNJ,K,Healthcare & life sciences
+ABBV,K,Healthcare & life sciences
+MRK,K,Healthcare & life sciences
+UNH,K,Healthcare & life sciences
+ISRG,K,Healthcare & life sciences
+VRTX,K,Healthcare & life sciences
+CRSP,K,Healthcare & life sciences
+TMO,K,Healthcare & life sciences
+CAT,L,"Industrials, aerospace & electrical equipment"
+GE,L,"Industrials, aerospace & electrical equipment"
+GEV,L,"Industrials, aerospace & electrical equipment"
+RTX,L,"Industrials, aerospace & electrical equipment"
+VRT,L,"Industrials, aerospace & electrical equipment"
+ETN,L,"Industrials, aerospace & electrical equipment"
+XOM,M,Energy & utilities
+CVX,M,Energy & utilities
+CEG,M,Energy & utilities
+NEE,M,Energy & utilities
+LIN,N,Materials
+FCX,N,Materials
+CBRE,O,Real estate services
