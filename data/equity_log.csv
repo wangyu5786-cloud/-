@@ -3,3 +3,4 @@ timestamp_beijing,account_value,cash,rank,players,note
 2026-10-30 00:10,100029.50,52635.64,35,140,intraday snapshot (US 10/29)
 2026-10-30 22:00,98744.36,52635.64,120,143,intraday snapshot (US 10/30); Nasdaq futures -2%
 2026-11-01 21:10,97986.18,42903.29,117,145,after US 10/30 close; SOX -7.2% that day
+2026-11-03 09:38,96959.94,40850.84,117,147,after US 11/2 close; TSM rotation #5 filled

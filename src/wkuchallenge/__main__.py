@@ -80,7 +80,7 @@ def main(argv=None) -> None:
     for name, fn in (("status", cmd_status), ("charts", cmd_charts)):
         p = sub.add_parser(name)
         p.add_argument("--trades", default=DATA / "trades.csv")
-        p.add_argument("--prices", default=DATA / "prices_2026-10-30.csv")
+        p.add_argument("--prices", default=DATA / "prices_2026-11-02.csv")
         p.add_argument("--peak", type=float, default=100_400.0, help="highest account value so far")
         p.set_defaults(fn=fn)
 
@@ -93,8 +93,8 @@ def main(argv=None) -> None:
     p.set_defaults(fn=cmd_limit)
 
     p = sub.add_parser("simulate")
-    p.add_argument("--start", type=float, default=97_986.18)
-    p.add_argument("--days", type=int, default=15)
+    p.add_argument("--start", type=float, default=96_959.94)
+    p.add_argument("--days", type=int, default=14)
     p.add_argument("--n", type=int, default=50_000)
     p.set_defaults(fn=cmd_simulate)
 

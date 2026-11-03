@@ -11,3 +11,4 @@ date,ticker,side,shares,price,note
 2026-10-29,GOOGL,BUY,10,285.80,AI platform
 2026-10-30,BRK.B,BUY,9,545.70,defensive add on tech sell-off (fill reconstructed from portfolio page)
 2026-10-30,VRT,BUY,21,229.56,GTC limit 230 at support (fill reconstructed from portfolio page)
+2026-11-02,TSM,BUY,5,410.49,rotation #5 - completes top bonus tier

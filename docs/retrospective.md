@@ -1,4 +1,4 @@
-# Retrospective (written mid-contest, Nov 2, 2026)
+# Retrospective (written mid-contest, updated Nov 3, 2026)
 
 ## Timeline
 
@@ -9,6 +9,7 @@
 | Oct 28 | Topped up TSM; bought BRK.B, GEV and SNDK | Moved to the aggressive plan after the model run; SNDK was an earnings bet |
 | Oct 29 | A teammate trimmed TSM; we bought GOOGL | GOOGL fell 12.6% that day, its worst day on record |
 | Oct 30 | Bought BRK.B and VRT (GTC limit at $230) | The semiconductor index fell 7.2%. We added defence and caught VRT on the dip |
+| Nov 2 | Bought 5 TSM | Fifth rotation day, which locks in the top 5% bonus tier |
 
 ## What worked
 
@@ -28,5 +29,5 @@
 
 ## Still open
 
-- We are 56% invested against an 89% target, and the rank is 117 of 145. The remaining weeks will decide whether the aggressive plan pays off.
+- We are 58% invested against an 89% target, and the rank is 117 of 147 (Nov 2). The remaining weeks will decide whether the aggressive plan pays off.
 - This file will be updated after Nov 20 with the final result.

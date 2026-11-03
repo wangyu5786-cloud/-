@@ -5,7 +5,7 @@ A small Python project built during a four-week simulated stock-picking contest 
 ![Holdings vs average cost](reports/pnl_vs_cost.png)
 ![Allocation](reports/allocation.png)
 
-*Snapshot after the U.S. close on Oct 30, 2026, which was the semiconductor index's worst day of the contest so far (−7.2%).*
+*Snapshot after the U.S. close on Nov 2, 2026. The fifth rotation day (a TSM buy) locked in the top 5% bonus tier.*
 
 ## What it does
 
@@ -22,21 +22,21 @@ pip install -e .            # or: pip install -r requirements.txt
 cd src
 python -m wkuchallenge status                                  # holdings, score, rule warnings
 python -m wkuchallenge limit TSM 2100 --prev-close 406.13      # limit price + share count
-python -m wkuchallenge simulate --start 97986 --days 15        # strategy comparison
+python -m wkuchallenge simulate --start 96960 --days 14        # strategy comparison
 python -m wkuchallenge charts                                  # regenerate reports/*.png
 pytest                                                         # from the repo root
 ```
 
-`status` output on the Oct 30 snapshot:
+`status` output on the Nov 2 snapshot:
 
 ```
-Cash 42,903.17 | Account 97,986.06 | Invested 56% (target 89%)
-Rotation days 4: 2026-10-27, 2026-10-28, 2026-10-29, 2026-10-30
+Cash 40,850.72 | Account 96,959.82 | Invested 58% (target 89%)
+Rotation days 5: 2026-10-27, 2026-10-28, 2026-10-29, 2026-10-30, 2026-11-02
 Rule checks:
-  ! SNDK: -16.7% vs cost, past the 12% review line
+  ! SNDK: -22.2% vs cost, past the 12% review line
 ```
 
-The rebuilt account matches the simulator's figure to within $0.12.
+The rebuilt account matches the simulator's figure to within $0.12 on every snapshot checked (see `tests/`).
 
 ## Contest rules encoded
 
@@ -54,14 +54,14 @@ The rebuilt account matches the simulator's figure to within $0.12.
 
 ## Strategy model
 
-With about 15 trading days left and the account at $97,986, we ran 50,000 simulated contests against 123 competitors of mixed styles:
+With 14 trading days left and the account at $96,960, we ran 50,000 simulated contests against 123 competitors of mixed styles:
 
 | Strategy | E[score] | Lose >8% | Bottom 20 | Top 10 | Top 3 |
 |---|---:|---:|---:|---:|---:|
-| Conservative, ~30% invested | 98,189 | 0.7% | 13.5% | 0.0% | 0.0% |
-| Original plan, ~60% invested | 98,423 | 10.6% | 15.0% | 0.2% | 0.0% |
-| Aggressive, ~89% in 5–6 names | 98,774 | 24.8% | 29.0% | 6.1% | 0.9% |
-| All-in, 2–3 high-vol names | 99,174 | 34.3% | 38.3% | 21.7% | 9.6% |
+| Conservative, ~30% invested | 97,138 | 1.7% | 23.2% | 0.0% | 0.0% |
+| Original plan, ~60% invested | 97,346 | 13.8% | 22.8% | 0.1% | 0.0% |
+| Aggressive, ~89% in 5–6 names | 97,668 | 27.6% | 34.0% | 4.4% | 0.6% |
+| All-in, 2–3 high-vol names | 98,039 | 36.1% | 41.1% | 19.2% | 8.1% |
 
 The point the model made for us is that **in a ranked contest, playing safe almost guarantees a middle finish.** Moving up the table only happens by accepting a real chance of a bad result. The team chose a tolerance of about 15–20% for "losing badly", and this table is what that choice trades off against.
 

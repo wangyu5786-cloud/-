@@ -27,12 +27,15 @@ def test_overselling_is_rejected():
         build_positions([Trade("d", "X", "BUY", 1, 10), Trade("d", "X", "SELL", 2, 10)])
 
 
-def test_real_log_reconciles_with_platform():
-    trades = load_trades(DATA / "trades.csv")
-    snap = snapshot(trades, load_prices(DATA / "prices_2026-10-30.csv"), CONTEST.start_cash)
-    # Investopedia showed cash $42,903.29 and account $97,986.18 after the 10/30 close.
-    assert cash_after(trades, CONTEST.start_cash) == pytest.approx(42_903.29, abs=1.0)
-    assert snap.account_value == pytest.approx(97_986.18, abs=1.0)
+@pytest.mark.parametrize("cutoff,price_file,cash,account", [
+    ("2026-10-30", "prices_2026-10-30.csv", 42_903.29, 97_986.18),   # after the 10/30 close
+    ("2026-11-02", "prices_2026-11-02.csv", 40_850.84, 96_959.94),   # after the 11/2 close
+])
+def test_real_log_reconciles_with_platform(cutoff, price_file, cash, account):
+    trades = [t for t in load_trades(DATA / "trades.csv") if t.date <= cutoff]
+    snap = snapshot(trades, load_prices(DATA / price_file), CONTEST.start_cash)
+    assert cash_after(trades, CONTEST.start_cash) == pytest.approx(cash, abs=1.0)
+    assert snap.account_value == pytest.approx(account, abs=1.0)
 
 
 def test_every_trade_is_on_the_list():
@@ -43,7 +46,7 @@ def test_every_trade_is_on_the_list():
 
 def test_rotation_days_skip_build_day():
     trades = load_trades(DATA / "trades.csv")
-    assert len(rotation_days(trades, CONTEST.start_date)) == 4
+    assert len(rotation_days(trades, CONTEST.start_date)) == 5
 
 
 @pytest.mark.parametrize("days,rate", [(0, 0), (1, 0.02), (2, 0.02), (3, 0.03), (4, 0.03), (5, 0.05), (12, 0.05)])
