@@ -7,6 +7,14 @@ A small Python project built during a four-week simulated stock-picking contest 
 
 *Snapshot after the U.S. close on Nov 2, 2026. The fifth rotation day (a TSM buy) locked in the top 5% bonus tier.*
 
+## Team
+
+| Member | Role |
+|---|---|
+| **Zhaonan Tu (涂兆楠)** · [@tttDevout](https://github.com/tttDevout) | Team captain: manages the contest account, watches the market in real time and brings in market information |
+| **Yingbo Zhao (赵英博)** | Daily market monitoring |
+| **Yu "Lucas" Wang (王禹)** · [@wangyu5786-cloud](https://github.com/wangyu5786-cloud) | Execution and tooling: order execution, limit-price rules, the team dashboard and this repository |
+
 ## What it does
 
 | Module | Purpose |
