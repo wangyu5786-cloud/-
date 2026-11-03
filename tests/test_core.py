@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 
 from wkuchallenge.config import CONTEST
-from wkuchallenge.portfolio import Trade, build_positions, cash_after, load_prices, load_trades, rotation_days, snapshot
+from wkuchallenge.portfolio import Trade, build_positions, cash_after, load_prices, load_trades, rotation_days, snapshot, trade_attribution
 from wkuchallenge.rules import contest_score, limit_order, load_universe, off_list_penalty, risk_report, rotation_bonus_rate
 from wkuchallenge.simulate import Strategy, simulate
 
@@ -78,3 +78,13 @@ def test_simulation_more_risk_means_wider_outcomes():
     low, high = res
     assert high["p_top_3"] > low["p_top_3"]
     assert high["p_loss_8pct"] > low["p_loss_8pct"]
+
+
+def test_attribution_adds_up_to_total_pnl():
+    trades = load_trades(DATA / "trades.csv")
+    prices = load_prices(DATA / "prices_2026-11-02.csv")
+    rows = trade_attribution(trades, prices)
+    snap = snapshot(trades, prices, CONTEST.start_cash)
+    assert sum(r["pnl"] for r in rows) == pytest.approx(snap.account_value - CONTEST.start_cash)
+    tsm_sell = next(r for r in rows if r["side"] == "SELL")
+    assert tsm_sell["pnl"] == pytest.approx(9 * (433.96 - 398.63))

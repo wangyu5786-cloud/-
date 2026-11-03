@@ -11,7 +11,7 @@ A small Python project built during a four-week simulated stock-picking contest 
 
 | Module | Purpose |
 |---|---|
-| `portfolio.py` | Replays the trade log with average-cost accounting, which is how the simulator reports cost. Then it values holdings, cash and weights at a price file. |
+| `portfolio.py` | Replays the trade log with average-cost accounting, which is how the simulator reports cost. Then it values holdings, cash and weights at a price file, and attributes the total P&L to individual trades. |
 | `rules.py` | Contest scoring (rotation bonus, off-list penalty), the limit-price rule and the risk checks. |
 | `simulate.py` | Monte Carlo model comparing exposure, beta and concentration against a simulated field of competitors. |
 | `report.py` | The two charts above. |
@@ -22,6 +22,7 @@ pip install -e .            # or: pip install -r requirements.txt
 cd src
 python -m wkuchallenge status                                  # holdings, score, rule warnings
 python -m wkuchallenge limit TSM 2100 --prev-close 406.13      # limit price + share count
+python -m wkuchallenge attribution                             # which trades made or lost money
 python -m wkuchallenge simulate --start 96960 --days 14        # strategy comparison
 python -m wkuchallenge charts                                  # regenerate reports/*.png
 pytest                                                         # from the repo root

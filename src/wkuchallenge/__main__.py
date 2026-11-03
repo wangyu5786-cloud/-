@@ -2,6 +2,7 @@
 
   status    holdings, P&L, invested share, rule warnings, contest score
   limit     limit price and share count for a planned buy
+  attribution  which trades made or lost money, best to worst
   simulate  Monte Carlo comparison of strategies
   charts    write the README charts to reports/
 """
@@ -11,7 +12,7 @@ import argparse
 from pathlib import Path
 
 from .config import CONTEST, STRATEGY
-from .portfolio import load_prices, load_trades, rotation_days, snapshot
+from .portfolio import load_prices, load_trades, rotation_days, snapshot, trade_attribution
 from .rules import contest_score, limit_order, load_universe, risk_report
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -42,6 +43,28 @@ def cmd_status(args) -> None:
     warnings = risk_report(snap.rows, snap.account_value, args.peak)
     print("\nRule checks:")
     print("\n".join(f"  ! {w}" for w in warnings) if warnings else "  all clear")
+
+
+def cmd_attribution(args) -> None:
+    trades = load_trades(args.trades)
+    rows = trade_attribution(trades, load_prices(args.prices))
+
+    print(f"{'Date':<12}{'Ticker':<7}{'Side':<6}{'Shares':>7}{'Fill':>10}{'Now':>10}{'P&L':>10}{'P&L %':>8}")
+    for r in rows:
+        print(f"{r['date']:<12}{r['ticker']:<7}{r['side']:<6}{r['shares']:>7}{r['fill']:>10.2f}{r['now']:>10.2f}"
+              f"{r['pnl']:>10,.0f}{r['pnl_pct']:>8.1%}")
+
+    by_ticker: dict[str, float] = {}
+    for r in rows:
+        by_ticker[r["ticker"]] = by_ticker.get(r["ticker"], 0.0) + r["pnl"]
+    total = sum(by_ticker.values())
+    print("\nBy stock:")
+    for tk, v in sorted(by_ticker.items(), key=lambda kv: kv[1], reverse=True):
+        print(f"  {tk:<7}{v:>10,.0f}")
+    print(f"  {'Total':<7}{total:>10,.0f}  (= account value - $100,000)")
+    best, worst = rows[0], rows[-1]
+    print(f"\nBest trade:  {best['date']} {best['side']} {best['ticker']}  {best['pnl']:+,.0f}")
+    print(f"Worst trade: {worst['date']} {worst['side']} {worst['ticker']}  {worst['pnl']:+,.0f}")
 
 
 def cmd_limit(args) -> None:
@@ -77,7 +100,7 @@ def main(argv=None) -> None:
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
 
-    for name, fn in (("status", cmd_status), ("charts", cmd_charts)):
+    for name, fn in (("status", cmd_status), ("charts", cmd_charts), ("attribution", cmd_attribution)):
         p = sub.add_parser(name)
         p.add_argument("--trades", default=DATA / "trades.csv")
         p.add_argument("--prices", default=DATA / "prices_2026-11-02.csv")

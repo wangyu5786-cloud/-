@@ -129,3 +129,28 @@ def snapshot(trades: list[Trade], prices: dict[str, float], start_cash: float) -
     for r in snap.rows:
         r["weight"] = r["value"] / snap.account_value
     return snap
+
+
+def trade_attribution(trades: list[Trade], prices: dict[str, float]) -> list[dict]:
+    """How much each trade has added to (or taken from) the account so far.
+
+    The account is linear in the trades: every BUY swaps cash for shares now
+    worth today's price, every SELL swaps shares (worth today's price) for cash.
+    So one trade's contribution is
+
+        BUY:  shares * (price_now - fill_price)
+        SELL: shares * (fill_price - price_now)
+
+    A positive SELL means we sold above today's price (a good exit). The
+    contributions add up exactly to account value minus starting cash.
+    """
+    rows = []
+    for t in trades:
+        if t.ticker not in prices:
+            raise KeyError(f"no price for {t.ticker}")
+        now = prices[t.ticker]
+        sign = 1 if t.side == "BUY" else -1
+        pnl = sign * t.shares * (now - t.price)
+        rows.append(dict(date=t.date, ticker=t.ticker, side=t.side, shares=t.shares,
+                         fill=t.price, now=now, pnl=pnl, pnl_pct=sign * (now / t.price - 1), note=t.note))
+    return sorted(rows, key=lambda r: r["pnl"], reverse=True)
